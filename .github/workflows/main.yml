@@ -19,7 +19,7 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Azure CLI - Login to ACR
+    - name: Login to ACR
       run: |
         az acr login --name ${{ secrets.ACR_NAME }}
 
