@@ -16,6 +16,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
+    - name: Check secret presence
+      run: |
+        echo "Client ID: ${{ secrets.AZURE_CLIENT_ID }}"
+        echo "Client Secret Length: ${#${{ secrets.AZURE_CLIENT_SECRET }}}"
+
     - name: Log in to Azure
       uses: azure/login@v2
       with:
