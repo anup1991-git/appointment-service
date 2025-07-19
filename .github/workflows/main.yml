@@ -18,8 +18,12 @@ jobs:
 
     - name: Check secret presence
       run: |
-        echo "Client ID: ${{ secrets.AZURE_CLIENT_ID }}"
-        echo "Client Secret Length: ${#${{ secrets.AZURE_CLIENT_SECRET }}}"
+        if [ -z "${{ secrets.AZURE_CLIENT_SECRET }}" ]; then
+         echo "Client Secret is missing!"
+        exit 1
+        else
+          echo "Client Secret is set."
+        fi
 
     - name: Log in to Azure
       uses: azure/login@v2
